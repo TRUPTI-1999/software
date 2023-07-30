@@ -1,0 +1,83 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Mastermanager.master.cs" Inherits="Manager_Mastermanager" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Untitled Page</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+        .style3
+        {
+            width: 385px;
+        }
+        .style4
+        {
+            width: 265px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table class="style1">
+            <tr>
+                <td bgcolor="#009900" colspan="2">
+                    <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Italic="True" 
+                        Font-Names="Magneto" Font-Size="XX-Large" ForeColor="#FFFF66" 
+                        Text="Software Company"></asp:Label>
+                    <br />
+                    <b>Welcome:</b><asp:Label ID="lbl_name" runat="server" Font-Bold="True" 
+                        Font-Italic="True" ForeColor="Yellow"></asp:Label>
+                    <br />
+                </td>
+                <td bgcolor="#009900" colspan="2">
+                
+                    <asp:LinkButton ID="LinkButton6" runat="server" 
+                        PostBackUrl="~/Login/Login.aspx">Logout</asp:LinkButton>
+                </td>
+                    
+            </tr>
+            <tr>
+                <td class="style3">
+                    &nbsp;</td>
+                <td class="style4" colspan="2">
+                    &nbsp;</td>
+                <td>
+                    <asp:LinkButton ID="LinkButton3" runat="server" 
+                        PostBackUrl="~/Manager/Man Home.aspx">Home</asp:LinkButton>
+                </td>
+            </tr>
+            <tr>
+                <td class="style3">
+                    <asp:LinkButton ID="LinkButton5" runat="server" 
+                        PostBackUrl="~/Manager/allocate.aspx">Allocate Emp</asp:LinkButton>
+                </td>
+                <td class="style4" colspan="2">
+                    <asp:LinkButton ID="LinkButton4" runat="server" 
+                         onclick="LinkButton4_Click">Release Emp</asp:LinkButton>
+                </td>
+               
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <br />
+                    <br />
+                    <br />
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <br />
+                    <br />
+                    <br />
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

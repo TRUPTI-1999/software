@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System.Data.SqlClient;
+
+public partial class Admine_createproj : System.Web.UI.Page
+{
+    SqlConnection con = new SqlConnection("Data Source=AKITS-CSE\\SQLEXPRESS;Initial Catalog=TimeManagement;Integrated Security=True");
+    SqlCommand cmd=new SqlCommand();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        con.Open();
+        string name = txt_prjname.Text;
+        string sql="insert into createproj values('','" + name + "','" + txt_stddate.Text + "','" + txt_estdate.Text + "','" + txt_cname.Text + "','" + txt_cln.Text + "','" + txt_add.Text + "','" + txt_poc.Text + "','" + txt_po.Text + "','" + txt_scpdut.Text + "','" + txt_estcost.Text + "','" + rdb_typ.Text + "','" + txt_resreq.Text + "','" + txt_paymagr.Text + "','" + txt_payemp.Text + "','" + dd_tec.Text + "','" + dd_database.Text + "','" + txt_ass.Text + "')"+" select @@identity";
+        cmd.Connection = con;
+        cmd.CommandType = CommandType.Text;
+        cmd.CommandText=sql;
+        int id = int.Parse(cmd.ExecuteScalar().ToString());
+        string genid = name[0].ToString() + id;
+
+        string sql2 = "update createproj set projid='" + genid + "' where uniqid=" + id + " ";
+        SqlCommand cmd2 = new SqlCommand(sql2,con);
+        cmd2.CommandType = CommandType.Text;
+        cmd2.CommandText = sql2;
+        cmd2.ExecuteNonQuery();
+
+        con.Close();
+    }
+}
